@@ -1,6 +1,6 @@
 from django.db import models
 from account.models import User
-from assessment.models import Assessment
+from assessments.models import Assessment
 
 # Create your models here.
 class Question(models.Model):
