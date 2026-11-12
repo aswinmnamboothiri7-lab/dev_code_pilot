@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "assessments",
     "submissions",
     'rest_framework',
+    'question',
 ]
 
 MIDDLEWARE = [
