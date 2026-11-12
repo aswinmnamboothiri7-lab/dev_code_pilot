@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'account',
     'answer',
     "assessments",
+    "submissions",
     'rest_framework',
     'question',
 ]

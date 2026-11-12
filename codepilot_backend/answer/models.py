@@ -1,5 +1,5 @@
 from django.db import models
-from submssion.models import Submission
+from submissions.models import Submission
 from question.models import Question
 # Create your models here.
 class Answer(models.Model):
