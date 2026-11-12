@@ -38,13 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
-<<<<<<< HEAD
     'answer',
-=======
     "assessments",
->>>>>>> 58cbbcf2015d9490c5ef3434623ec04f25a43d79
     'rest_framework',
-    'question'
+    'question',
 ]
 
 MIDDLEWARE = [

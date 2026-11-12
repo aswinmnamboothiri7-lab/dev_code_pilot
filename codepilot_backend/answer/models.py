@@ -1,6 +1,6 @@
 from django.db import models
-from submission.models import Submission
-from qustion.models import Question
+from submssion.models import Submission
+from question.models import Question
 # Create your models here.
 class Answer(models.Model):
 
