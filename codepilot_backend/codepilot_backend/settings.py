@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     "assessments",
+    "submissions",
     'rest_framework',
     'question',
 ]
