@@ -6,17 +6,14 @@ from assessments.models import Assessment
 
 from assessments.serializers import AssessmentSerializer
 
-from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView,CreateAPIView
 
 from rest_framework import authentication,permissions
 
 from assessments.permissions import OwnerOnly
 
-from rest_framework.views import APIView
-
 from rest_framework.response import Response
 
-from rest_framework import status
 
 
 class AssessmentListCreateView(ListCreateAPIView):
@@ -40,6 +37,3 @@ class AssessmentRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     queryset=Assessment.objects.all()
 
 
-
-
-    
