@@ -1,0 +1,47 @@
+#api call for register admin
+###
+POST http://127.0.0.1:8000/account/admin/register/
+Content-Type: application/json
+
+{
+    "username":"jitheesh",
+    "email":"jitheesh@gmail.com",
+    "password":"jitheesh@123",
+    "phone":"8987456123"
+    
+
+}
+
+#api call for register student
+###
+POST http://127.0.0.1:8000/account/student/register/
+Content-Type: application/json
+
+{
+    "username":"meenu",
+    "email":"meenu@gmail.com",
+    "password":"meenu@123",
+    "phone":"8987696123"
+
+}
+
+#api call for student login
+###
+POST http://127.0.0.1:8000/account/student/token/
+Content-Type: application/json
+
+{
+    "username":"meenu",
+    "password":"meenu@123"
+
+}
+
+#api call for admin login
+###
+POST http://127.0.0.1:8000/account/admin/token/
+Content-Type: application/json
+
+{
+    "username":"jitheesh",
+    "password":"jitheesh@123"
+}
