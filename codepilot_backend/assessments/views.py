@@ -37,3 +37,27 @@ class AssessmentRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     queryset=Assessment.objects.all()
 
 
+class AssessmentPublishView(CreateAPIView):
+    authentication_classes=[authentication.TokenAuthentication]
+    permission_classes=[OwnerOnly]
+
+    serializer_class=AssessmentSerializer
+    queryset=Assessment.objects.all()
+
+    def post(self,request,pk):
+        try:
+            assessment=Assessment.objects.get(id=pk)
+
+            assessment.status="published"
+
+            assessment.save()
+
+            return Response({
+                "message":"Assessment published successfully",
+                "status": assessment.status
+            })
+        except Assessment.DoesNotExist:
+
+            return Response({
+                "error":"Assessment not found"
+            })
