@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "submissions",
     'rest_framework',
     'question',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [

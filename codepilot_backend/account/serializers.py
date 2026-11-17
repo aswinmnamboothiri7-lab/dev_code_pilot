@@ -15,7 +15,7 @@ class AdminSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
 
-        return User.objects.create_superuser(**validated_data)      
+        return User.objects.create_superuser(**validated_data,role="admin")      
 
 
 class StudentSerilaizer(serializers.ModelSerializer):
