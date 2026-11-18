@@ -3,7 +3,10 @@ from question.views import QuestionListCreateView,QuestionRetrieveUpdateDeleteVi
 
 
 urlpatterns = [
-    path('question/',QuestionListCreateView.as_view()),
-    path('question/<int:pk>/',QuestionRetrieveUpdateDeleteView.as_view()),
+
+    path('assessments/<int:pk>/problem/',QuestionListCreateView.as_view()),
+
+    path('problem/',QuestionListCreateView.as_view()),
+    path('problem/<int:pk>/',QuestionRetrieveUpdateDeleteView.as_view()),
     
 ]
