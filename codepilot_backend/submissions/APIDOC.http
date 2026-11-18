@@ -1,0 +1,18 @@
+# api call for create submission
+###
+POST http://127.0.0.1:8000/submissions/assessments/1/submit/
+Content-Type: application/json
+Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
+
+# api call for Admin list all student submissions
+###
+GET http://127.0.0.1:8000/submissions/submit/
+Accept: application/json
+Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
+
+# api call for retrieve
+###
+GET http://127.0.0.1:8000/submissions/submit/1/
+Accept: application/json
+Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
+
