@@ -45,3 +45,7 @@ Content-Type: application/json
     "username":"jitheesh",
     "password":"jitheesh@123"
 }
+
+#api call for view student profile
+###
+GET 
