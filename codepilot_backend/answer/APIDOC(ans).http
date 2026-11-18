@@ -1,0 +1,9 @@
+# api call for answering
+###
+POST http://127.0.0.1:8000/answer/submission/1/answer/
+Content-Type: application/json
+Authorization: Token 3e647301ad945f8b85b61facce7839c27f05ead3
+
+{
+    "answer_text":"print hello world"
+}
