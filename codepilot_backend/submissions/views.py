@@ -12,7 +12,10 @@ from rest_framework import authentication,permissions
 from rest_framework.generics import CreateAPIView,ListAPIView,RetrieveAPIView
 
 from submissions.permissions import OwnerOnly
-from assessments.permissions import OwnerOnly
+from assessments.permissions import AdminOnly
+
+from rest_framework.response import Response
+
 
 class SubmissionCreateView(CreateAPIView):
     serializer_class=SubmissionSerializer
@@ -25,21 +28,100 @@ class SubmissionCreateView(CreateAPIView):
 
 class SubmissionListView(ListAPIView):
     serializer_class=SubmissionSerializer
+    queryset=Submission.objects.all()
 
     authentication_classes=[authentication.TokenAuthentication]
-    permission_classes=[OwnerOnly]
+    permission_classes=[AdminOnly]
 
-    def get_queryset(self):
-        return Assessment.objects.filter(creator=self.request.user)
+   
 
 class SubmissionRetrieveView(RetrieveAPIView):
     serializer_class=SubmissionSerializer
+    queryset=Submission.objects.all()
+
+    authentication_classes=[authentication.TokenAuthentication]
+    permission_classes=[AdminOnly]
+
+    
+
+
+class SubmissionStatusView(RetrieveAPIView):
 
     authentication_classes=[authentication.TokenAuthentication]
     permission_classes=[OwnerOnly]
 
-    def get_queryset(self):
-        return Assessment.objects.filter(creator=self.request.user)
+    def get(self,request,pk):
+
+        try:
+            submission=Submission.objects.get(id=pk,student=request.user)
+
+            return Response({
+                "submission_id": submission.pk,
+                "status": submission.status
+            })
+        except Submission.DoesNotExist:
+            return Response({
+                 "message": "Assessment not submitted yet"
+            })
+
+class SubmissionFinalAssessmentView(CreateAPIView):
+    serializer_class = SubmissionSerializer
+
+    authentication_classes=[authentication.TokenAuthentication]
+    permission_classes=[OwnerOnly]
+
+    def post(self,request,pk):
+
+        try:
+            submission=Submission.objects.get(id=pk,student=request.user)
+
+            submission.status="submitted"
+            submission.save()
+
+            return Response({
+                "message": "Assessment submitted successfully",
+                "status": submission.status
+
+            })
+        except Submission.DoesNotExist:
+            return Response({
+                "message": "Submission not found"
+            })
+
+
+class SubmissionEvaluateView(RetrieveAPIView):
+    serializer_class=SubmissionSerializer
+    queryset = Submission.objects.all()
+
+    authentication_classes=[authentication.TokenAuthentication]
+    permission_classes=[AdminOnly]
+
+    def post(self,request,pk):
+        try:
+            submission=Submission.objects.get(id=pk)
+            submission.marks=request.data.get("marks")
+            submission.feedback=request.data.get("feedback")
+            submission.status="evaluated"
+
+            submission.save()
+
+            return Response({
+                "message": "Assessment evaluated successfully",
+                "submission_id": submission.pk,
+                "marks": submission.marks,
+                "feedback": submission.feedback,
+                "status": submission.status
+            })
+
+        except Submission.DoesNotExist:
+            return Response({
+                "message": "Submission not found"
+            })
+
+            
+        
+
+
 
 
 
