@@ -23,7 +23,6 @@ class Question(models.Model):
     ]
     programming_language = models.CharField(max_length=100,choices=PROGRAMMING_LANGUAGE_CHOICES)
 
-    # creator = models.ForeignKey(User,on_delete=models.CASCADE,related_name='questions')
 
     created_at = models.DateTimeField(auto_now_add= True)
 
