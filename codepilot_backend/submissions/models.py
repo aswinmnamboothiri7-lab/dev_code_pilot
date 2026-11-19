@@ -15,7 +15,8 @@ class Submission(models.Model):
     assessment=models.ForeignKey(
             Assessment,
             on_delete=models.CASCADE,
-            related_name="assessments"
+            related_name="assessments",
+            null=True
         )
 
     STATUS_CHOICES=[
