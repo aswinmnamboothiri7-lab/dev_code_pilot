@@ -5,25 +5,29 @@ from question.models import Question
 from question.serializers import QuestionSerializers
 from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
 from rest_framework import authentication,permissions
+from question.Permissions import OwnerOnly
 
 class QuestionListCreateView(ListCreateAPIView):
 
     authentication_classes = [authentication.TokenAuthentication]
-    permission_classes =[]
+    permission_classes =[OwnerOnly]
 
     serializer_class = QuestionSerializers
 
     def get_queryset(self):
-        return Question.objects.filter(creator=self.request.user)
+        return Question.objects.filter(
+        assessment_id=self.kwargs['pk'],
+        assessment__creator=self.request.user
+    )
 
     def perform_create(self, serializer):
-        return serializer.save(creator=self.request.user)
+        return serializer.save()
 
 
 class QuestionRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
 
     authentication_classes = [authentication.TokenAuthentication]
-    permission_classes = []
+    permission_classes = [OwnerOnly]
 
     serializer_class = QuestionSerializers
 
