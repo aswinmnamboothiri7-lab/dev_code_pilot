@@ -2,13 +2,13 @@
 ###
 GET http://127.0.0.1:8000/assessments/exam/
 Accept: application/json
-Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
+Authorization: Token 340f51512140d7392f8e3df3e183b5848849c5a6
 
 # api call for create assessments
 ###
 POST http://127.0.0.1:8000/assessments/exam/
 Content-Type: application/json
-Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
+Authorization: Token 340f51512140d7392f8e3df3e183b5848849c5a6
 
 {
     "title":"Python Basics Quiz",
@@ -21,13 +21,13 @@ Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
 ###
 GET http://127.0.0.1:8000/assessments/exam/1/
 Accept: application/json
-Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
+Authorization: Token 340f51512140d7392f8e3df3e183b5848849c5a6
 
 # api call for update assessment
 ###
 PATCH http://127.0.0.1:8000/assessments/exam/1/
 Content-Type: application/json
-Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
+Authorization: Token 340f51512140d7392f8e3df3e183b5848849c5a6
 
 {
     "duration":60
@@ -37,4 +37,4 @@ Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
 ###
 POST http://127.0.0.1:8000/assessments/exam/1/publish/
 Content-Type: application/json
-Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
+Authorization: Token 340f51512140d7392f8e3df3e183b5848849c5a6

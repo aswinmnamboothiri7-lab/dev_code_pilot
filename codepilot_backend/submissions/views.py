@@ -5,6 +5,7 @@ from submissions.models import Submission
 
 from assessments.models import Assessment
 
+
 from submissions.serializers import SubmissionSerializer 
 
 from rest_framework import authentication,permissions
@@ -13,6 +14,7 @@ from rest_framework.generics import CreateAPIView,ListAPIView,RetrieveAPIView
 
 from submissions.permissions import OwnerOnly
 from assessments.permissions import AdminOnly
+# from question.Permissions import OwnerOnly
 
 from rest_framework.response import Response
 
@@ -40,7 +42,7 @@ class SubmissionRetrieveView(RetrieveAPIView):
     queryset=Submission.objects.all()
 
     authentication_classes=[authentication.TokenAuthentication]
-    permission_classes=[AdminOnly]
+    permission_classes=[OwnerOnly]
 
     
 
@@ -48,6 +50,7 @@ class SubmissionRetrieveView(RetrieveAPIView):
 class SubmissionStatusView(RetrieveAPIView):
 
     authentication_classes=[authentication.TokenAuthentication]
+
     permission_classes=[OwnerOnly]
 
     def get(self,request,pk):
@@ -90,18 +93,21 @@ class SubmissionFinalAssessmentView(CreateAPIView):
 
 
 class SubmissionEvaluateView(RetrieveAPIView):
-    serializer_class=SubmissionSerializer
+
+    serializer_class = SubmissionSerializer
     queryset = Submission.objects.all()
 
-    authentication_classes=[authentication.TokenAuthentication]
-    permission_classes=[AdminOnly]
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [AdminOnly]
 
-    def post(self,request,pk):
+    def post(self, request, pk):
+
         try:
-            submission=Submission.objects.get(id=pk)
-            submission.marks=request.data.get("marks")
-            submission.feedback=request.data.get("feedback")
-            submission.status="evaluated"
+            submission = Submission.objects.get(id=pk)
+
+            submission.marks = request.data.get("marks")
+            submission.feedback = request.data.get("feedback")
+            submission.status = "evaluated"
 
             submission.save()
 
@@ -114,6 +120,7 @@ class SubmissionEvaluateView(RetrieveAPIView):
             })
 
         except Submission.DoesNotExist:
+
             return Response({
                 "message": "Submission not found"
             })
