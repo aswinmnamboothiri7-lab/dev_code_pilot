@@ -10,7 +10,7 @@ from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIVi
 
 from rest_framework import authentication,permissions
 
-from assessments.permissions import OwnerOnly
+from assessments.permissions import AdminOnly
 
 from rest_framework.response import Response
 
@@ -30,7 +30,7 @@ class AssessmentListCreateView(ListCreateAPIView):
 
 class AssessmentRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     authentication_classes=[authentication.TokenAuthentication]
-    permission_classes=[OwnerOnly]
+    permission_classes=[AdminOnly]
     
     serializer_class=AssessmentSerializer
 
@@ -39,7 +39,7 @@ class AssessmentRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
 
 class AssessmentPublishView(CreateAPIView):
     authentication_classes=[authentication.TokenAuthentication]
-    permission_classes=[OwnerOnly]
+    permission_classes=[AdminOnly]
 
     serializer_class=AssessmentSerializer
     queryset=Assessment.objects.all()
