@@ -6,6 +6,7 @@ from question.serializers import QuestionSerializers
 from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
 from rest_framework import authentication,permissions
 from question.Permissions import OwnerOnly
+from assessments.permissions import OwnerOnly
 
 class QuestionListCreateView(ListCreateAPIView):
 
