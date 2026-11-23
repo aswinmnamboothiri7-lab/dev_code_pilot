@@ -1,11 +1,8 @@
 from rest_framework import serializers
-from question.models import Question
+from .models import Question
+
 class QuestionSerializers(serializers.ModelSerializer):
-
-    class Meta :
-
-        modle = Question
-
+    class Meta:
+        model = Question
         fields = '__all__'
-
-        read_only_fields = ['id','created_at','updated_at']
+        read_only_fields = ['id', 'created_at', 'updated_at']

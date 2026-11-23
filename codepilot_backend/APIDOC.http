@@ -35,6 +35,8 @@ Content-Type: application/json
     "password":"meenu@123"
 
 }
+    
+
 
 #api call for admin login
 ###
@@ -45,6 +47,8 @@ Content-Type: application/json
     "username":"jitheesh",
     "password":"jitheesh@123"
 }
+    # token340f51512140d7392f8e3df3e183b5848849c5a6
+
 
 #api call for view student profile
 ###
