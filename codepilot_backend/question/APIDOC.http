@@ -1,15 +1,48 @@
-# api call for list question
+# api call for list all questions in an assessment
 
 ### 
-GET http://127.0.0.1:8000/question/
+GET http://127.0.0.1:8000/question/assessments/1/problem/
 Accept: application/json
-Authorization: Token
+Authorization: Token 340f51512140d7392f8e3df3e183b5848849c5a6
 
 
 # api call for create question
 ###
-POST http://127.0.0.1:8000/question/
+POST http://127.0.0.1:8000/question/problem/
 Content-Type: application/json
-Authorization: Token
+Authorization: Token 340f51512140d7392f8e3df3e183b5848849c5a6
+
+{
+    "prompt": "Write a Python program to find the factorial of a given number.",
+    "maximum_mark": 15,
+    "display_order": 3,
+    "programming_language": "python",
+    "assessment": 1
+}
+
+# api call for retrieve question
+###
+GET http://127.0.0.1:8000/question/problem/1/
+Accept: application/json
+Authorization: Token  340f51512140d7392f8e3df3e183b5848849c5a6
 
 
+api call for update questtion
+###
+PUT http://127.0.0.1:8000/question/problem/1/
+Content-Type: application/json
+Authorization: Token  340f51512140d7392f8e3df3e183b5848849c5a6
+
+{
+    "prompt": "Write a Python program to find the sum of all even numbers in a given list.",
+    "maximum_mark": 20,
+    "display_order": 3,
+    "programming_language": "python",
+    "assessment": 1
+}
+
+# api call for delete questiom
+###
+DELETE http://127.0.0.1:8000/question/problem/3/
+Accept: application/json
+Authorization: Token  340f51512140d7392f8e3df3e183b5848849c5a6
