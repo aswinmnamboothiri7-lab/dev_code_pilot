@@ -5,11 +5,20 @@ from answer.models import Answer
 from answer.serializers import AnswerSerializer
 from rest_framework import authentication,permissions
 from assessments.permissions import OwnerOnly
+from submissions.models import Submission
 # Create your views here.
 class AnswerCreateView(CreateAPIView):
     authentication_classes=[authentication.TokenAuthentication]
     permission_classes=[OwnerOnly]
     serializer_class=AnswerSerializer
+    queryset=Answer.objects.all()
+
+    def perform_create(self, serializer):
+        submission_id=self.request.data.get("submission")
+
+        submission=Submission.objects.get(id=submission_id)
+
+        serializer.save(submission=submission)
 
 class AnswerListView(ListAPIView):
     authentication_classes=[authentication.TokenAuthentication]
