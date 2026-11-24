@@ -12,11 +12,9 @@ Authorization: Token 7ee2624a0ce0e06cc11c27ef5ac1361e7c6e115e
 
 # api call for retrieve
 ###
-GET http://127.0.0.1:8000/submissions/submit/1/
+GET http://127.0.0.1:8000/submissions/submit/2/
 Accept: application/json
 Authorization: Token 7ee2624a0ce0e06cc11c27ef5ac1361e7c6e115e
-
-
 # api call for view own submission status
 ###
 GET http://127.0.0.1:8000/submissions/submit/1/status/
