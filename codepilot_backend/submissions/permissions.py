@@ -10,18 +10,19 @@ class OwnerOnly(BasePermission):
 
 
 
-class SubmissionAdminOnly(BasePermission):
-
-    def has_permission(self, request, view):
-
-        return request.user.is_superuser
 
 # class SubmissionAdminOnly(BasePermission):
 
-#     def has_permission(self, request, view):
+#     def has_object_permission(self, request, view, obj):
 
-#         return request.user.is_authenticated and request.user.creator
-
-
+#         return request.user == obj.assessment.creator
 
 
+
+class SubmissionAdminOnly(BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+
+       
+
+        return request.user == obj.assessment.creator

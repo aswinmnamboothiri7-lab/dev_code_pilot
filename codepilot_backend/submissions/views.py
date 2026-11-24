@@ -5,7 +5,7 @@ from submissions.models import Submission
 
 from assessments.models import Assessment
 
-from rest_framework.permissions import IsAdminUser
+
 
 
 from submissions.serializers import SubmissionSerializer 
@@ -15,7 +15,7 @@ from rest_framework import authentication,permissions
 from rest_framework.generics import CreateAPIView,ListAPIView,RetrieveAPIView
 
 from submissions.permissions import OwnerOnly
-from assessments.permissions import AdminOnly
+# from assessments.permissions import AdminOnly
 from submissions.permissions import SubmissionAdminOnly
 
 from rest_framework.response import Response
@@ -67,11 +67,15 @@ class SubmissionCreateView(CreateAPIView):
     
 
 class SubmissionListView(ListAPIView):
+
     serializer_class=SubmissionSerializer
+
     queryset=Submission.objects.all()
 
+    
     authentication_classes=[authentication.TokenAuthentication]
-    permission_classes=[AdminOnly]
+    
+    permission_classes=[SubmissionAdminOnly]
 
    
 
@@ -82,9 +86,11 @@ class SubmissionRetrieveView(RetrieveAPIView):
 
     queryset = Submission.objects.all()
 
-    authentication_classes = [authentication.TokenAuthentication]
+    authentication_classes = [
+        authentication.TokenAuthentication
+    ]
 
-    permission_classes = [IsAdminUser]
+    permission_classes = [SubmissionAdminOnly]
 
 class SubmissionStatusView(RetrieveAPIView):
 
@@ -137,7 +143,7 @@ class SubmissionEvaluateView(RetrieveAPIView):
     queryset = Submission.objects.all()
 
     authentication_classes = [authentication.TokenAuthentication]
-    permission_classes = [AdminOnly]
+    permission_classes = [SubmissionAdminOnly]
 
     def post(self, request, pk):
 

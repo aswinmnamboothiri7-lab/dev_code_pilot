@@ -10,8 +10,8 @@ Content-Type: application/json
 Authorization: Token 7ee2624a0ce0e06cc11c27ef5ac1361e7c6e115e
 
 {
-    "title":"Django application development",
-    "description":"Create an application using DRF.",
+    "title":"java application",
+    "description":"Create an application using java.",
     "instructions":"Read the instructions and build the app with the given time.",
     "duration":60
 }
