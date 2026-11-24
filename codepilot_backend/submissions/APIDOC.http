@@ -1,6 +1,6 @@
 # api call for create submission
 ###
-POST http://127.0.0.1:8000/submissions/assessments/1/submit/
+POST http://127.0.0.1:8000/submissions/assessments/2/submit/
 Content-Type: application/json
 Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
 

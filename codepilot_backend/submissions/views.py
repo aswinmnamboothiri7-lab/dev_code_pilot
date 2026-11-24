@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 
 # Create your views here.
 from submissions.models import Submission
 
 from assessments.models import Assessment
+
+from rest_framework.permissions import IsAdminUser
 
 
 from submissions.serializers import SubmissionSerializer 
@@ -14,19 +16,55 @@ from rest_framework.generics import CreateAPIView,ListAPIView,RetrieveAPIView
 
 from submissions.permissions import OwnerOnly
 from assessments.permissions import AdminOnly
-# from question.Permissions import OwnerOnly
+from submissions.permissions import SubmissionAdminOnly
 
 from rest_framework.response import Response
 
 
-class SubmissionCreateView(CreateAPIView):
-    serializer_class=SubmissionSerializer
 
-    authentication_classes=[authentication.TokenAuthentication]
-    permission_classes=[OwnerOnly]
+# class SubmissionCreateView(CreateAPIView):
+
+#     serializer_class = SubmissionSerializer
+
+#     authentication_classes = [authentication.TokenAuthentication]
+
+#     # permission_classes = [permissions.IsAuthenticated]
+#     permission_classes=[OwnerOnly]
+
+#     def perform_create(self, serializer):
+
+#         # assessment_id = self.request.data.get('assessment')
+
+#         # assessment = Assessment.objects.get(id=assessment_id)
+
+#         # serializer.save(
+#         #     student=self.request.user,
+#         #     assessment=assessment
+#         # )
+#         return serializer.save(student=self.request.user)
+
+
+class SubmissionCreateView(CreateAPIView):
+
+    serializer_class = SubmissionSerializer
+
+    authentication_classes = [authentication.TokenAuthentication]
+
+    permission_classes = [OwnerOnly]
 
     def perform_create(self, serializer):
-        return serializer.save(student=self.request.user)
+
+        assessment_id = self.kwargs.get('pk')
+
+        assessment = get_object_or_404(Assessment, id=assessment_id)
+
+        serializer.save(
+            student=self.request.user,
+            assessment=assessment
+        )
+
+
+    
 
 class SubmissionListView(ListAPIView):
     serializer_class=SubmissionSerializer
@@ -37,15 +75,16 @@ class SubmissionListView(ListAPIView):
 
    
 
+
 class SubmissionRetrieveView(RetrieveAPIView):
-    serializer_class=SubmissionSerializer
-    queryset=Submission.objects.all()
 
-    authentication_classes=[authentication.TokenAuthentication]
-    permission_classes=[OwnerOnly]
+    serializer_class = SubmissionSerializer
 
-    
+    queryset = Submission.objects.all()
 
+    authentication_classes = [authentication.TokenAuthentication]
+
+    permission_classes = [IsAdminUser]
 
 class SubmissionStatusView(RetrieveAPIView):
 
