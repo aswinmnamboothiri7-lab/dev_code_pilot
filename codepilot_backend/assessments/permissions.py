@@ -1,6 +1,6 @@
 from rest_framework.permissions import BasePermission
 
-from assessments.models import Assessment
+
 
 
 class AdminOnly(BasePermission):
