@@ -3,14 +3,15 @@
 ### 
 GET http://127.0.0.1:8000/question/assessments/1/problem/
 Accept: application/json
-Authorization: Token 340f51512140d7392f8e3df3e183b5848849c5a6
+Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
 
 
 # api call for create question
 ###
 POST http://127.0.0.1:8000/question/problem/
 Content-Type: application/json
-Authorization: Token 340f51512140d7392f8e3df3e183b5848849c5a6
+Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
+
 
 {
     "prompt": "Write a Python program to find the factorial of a given number.",
