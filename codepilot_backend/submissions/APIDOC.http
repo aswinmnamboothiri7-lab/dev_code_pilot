@@ -1,6 +1,6 @@
 # api call for create submission
 ###
-POST http://127.0.0.1:8000/submissions/assessments/1/submit/
+POST http://127.0.0.1:8000/submissions/assessments/2/submit/
 Content-Type: application/json
 Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
 
@@ -12,7 +12,7 @@ Authorization: Token 7ee2624a0ce0e06cc11c27ef5ac1361e7c6e115e
 
 # api call for retrieve
 ###
-GET http://127.0.0.1:8000/submissions/submit/1/
+GET http://127.0.0.1:8000/submissions/submit/2/
 Accept: application/json
 Authorization: Token 7ee2624a0ce0e06cc11c27ef5ac1361e7c6e115e
 
@@ -31,6 +31,11 @@ Authorization: Token 266d69a2a985f4d06913602a11d1bcdc7bbb09c1
 
 # api call for Admin evaluate marks and feedback  
 ###
-GET http://127.0.0.1:8000/submissions/submit/1/evaluate/
-Accept: application/json
+POst http://127.0.0.1:8000/submissions/submit/2/evaluate/
+Content-Type: application/json
 Authorization: Token 7ee2624a0ce0e06cc11c27ef5ac1361e7c6e115e
+
+{
+    "total_marks": 85,
+    "feedback": "Good performance"
+}

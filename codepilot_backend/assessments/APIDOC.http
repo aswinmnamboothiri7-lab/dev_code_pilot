@@ -2,26 +2,34 @@
 ###
 GET http://127.0.0.1:8000/assessments/exam/
 Accept: application/json
+<<<<<<< HEAD
 Authorization: Token d6426653f00333e8669f7c338633402dbf137446
 
+=======
+Authorization: Token 7ee2624a0ce0e06cc11c27ef5ac1361e7c6e115e
+>>>>>>> 666863c11b68235bec8d9eba0ee954ed67988ba4
 # api call for create assessments
 ###
 POST http://127.0.0.1:8000/assessments/exam/
 Content-Type: application/json
+<<<<<<< HEAD
 Authorization: Token d6426653f00333e8669f7c338633402dbf137446
+=======
+Authorization: Token 7ee2624a0ce0e06cc11c27ef5ac1361e7c6e115e
+>>>>>>> 666863c11b68235bec8d9eba0ee954ed67988ba4
 
 {
-    "title":"Python Basics Quiz",
-    "description":"A short quiz to test basic Python knowledge.",
-    "instructions":"Complete all questions within the given time.",
-    "duration":30
+    "title":"java application",
+    "description":"Create an application using java.",
+    "instructions":"Read the instructions and build the app with the given time.",
+    "duration":60
 }
 
 # api call for retrieve assessment
 ###
-GET http://127.0.0.1:8000/assessments/exam/1/
+GET http://127.0.0.1:8000/assessments/exam//
 Accept: application/json
-Authorization: Token 340f51512140d7392f8e3df3e183b5848849c5a6
+Authorization: Token 7ee2624a0ce0e06cc11c27ef5ac1361e7c6e115e
 
 # api call for update assessment
 ###
