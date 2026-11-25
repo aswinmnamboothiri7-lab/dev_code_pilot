@@ -1,9 +1,11 @@
 from django.shortcuts import render
 
 from account.models import StudentProfile
+from account.permissions import OwnerOnly
 
 from rest_framework.generics import CreateAPIView,RetrieveUpdateDestroyAPIView
 from rest_framework import authentication,permissions
+
 
 from account.serializers import AdminSerializer,StudentSerilaizer,StudentProfileSerializer
 
@@ -21,7 +23,7 @@ class StudentProfileRetrieveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
 
     authentication_classes = [authentication.TokenAuthentication]
 
-   
+    permission_classes=[OwnerOnly]
 
     serializer_class = StudentProfileSerializer
 

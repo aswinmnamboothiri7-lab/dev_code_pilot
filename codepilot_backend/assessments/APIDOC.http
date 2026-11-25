@@ -2,13 +2,13 @@
 ###
 GET http://127.0.0.1:8000/assessments/exam/
 Accept: application/json
-Authorization: Token 340f51512140d7392f8e3df3e183b5848849c5a6
+Authorization: Token d6426653f00333e8669f7c338633402dbf137446
 
 # api call for create assessments
 ###
 POST http://127.0.0.1:8000/assessments/exam/
 Content-Type: application/json
-Authorization: Token 340f51512140d7392f8e3df3e183b5848849c5a6
+Authorization: Token d6426653f00333e8669f7c338633402dbf137446
 
 {
     "title":"Python Basics Quiz",
