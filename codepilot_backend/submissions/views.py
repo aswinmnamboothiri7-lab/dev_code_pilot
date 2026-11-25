@@ -147,28 +147,25 @@ class SubmissionEvaluateView(RetrieveAPIView):
 
     def post(self, request, pk):
 
-        try:
-            submission = Submission.objects.get(id=pk)
+       
+            submission = get_object_or_404(Submission,id=pk)
+            self.check_object_permissions(request, submission)
 
-            submission.marks = request.data.get("marks")
+            submission.total_marks = request.data.get("total_marks")
             submission.feedback = request.data.get("feedback")
-            submission.status = "evaluated"
 
             submission.save()
 
             return Response({
                 "message": "Assessment evaluated successfully",
                 "submission_id": submission.pk,
-                "marks": submission.marks,
+                "total_marks": submission.total_marks,
                 "feedback": submission.feedback,
-                "status": submission.status
+                "status": submission.status,
+                "evaluation_state": submission.evaluation_state
             })
 
-        except Submission.DoesNotExist:
-
-            return Response({
-                "message": "Submission not found"
-            })
+        
 
             
         
